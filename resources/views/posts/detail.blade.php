@@ -30,7 +30,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-10">
-                <p id="para1">When confronted with my own future in five or ten years, I’m overwhelmed with trying to picture where I’ll
+                <p >When confronted with my own future in five or ten years, I’m overwhelmed with trying to picture where I’ll
                     be or what I’ll look like (after all, I just randomly shaved my head last week). When confronted with
                     the question of what humanity will look like in 100 years, I go completely blank. That’s why we asked
                     several artists last week, and several more this week, to dream up their idea of a Future Human for Medium’s

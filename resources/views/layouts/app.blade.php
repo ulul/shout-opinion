@@ -19,7 +19,7 @@
 
             @yield('nav')
         
-        <div class="container mt-3">
+        <div class="container mt-4">
             @yield('content')  
         </div>
 

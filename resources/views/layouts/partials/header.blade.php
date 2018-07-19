@@ -1,14 +1,16 @@
 <div class="row mb-3">
     <div class="d-none d-sm-block col">
-        <div class="mt-3 ml-3">About Us</div>
+        <div class="mt-2 ml-3">
+            <a href="{{ url('/') }}"><img src="{{ url('/img/app/logo.png') }}" style="width: 70px;"></a>
+        </div>
     </div>
-    <div class="col">
+    <div class="col mt-2">
         <a href="{{ url('/') }}" class="text-dark">
             <div class="text-center d-none d-sm-block">
-                <h2>Summer Story</h2>
+                <h2>Shout Opinion</h2>
             </div>
             <div class="d-none d-sm-block d-md-none d-block d-sm-none float-left mt-3">
-                <h4>Summer Story</h4>
+                <h4>Shout Opinion</h4>
             </div>
         </a>
     </div>
@@ -31,7 +33,7 @@
         <ul class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 @if (Auth::user()->avatar == '')
-                    <img src="{{ url('/img/ava.png') }}" style="width: 30px;">
+                   {{ ucfirst(Auth::user()->name) }} <img src="{{ url('/img/app/ava.png') }}" style="width: 30px;" >
                 @else
 
                 @endif
@@ -40,7 +42,7 @@
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ route('user.profile', Auth::user()->username) }}">
                     {{ __('Profile') }}
                 </a>
             </li>

@@ -17,8 +17,12 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::prefix('/user')->group(function(){
+	Route::get('/profile/{username}', 'UserController@profile')->name('user.profile');
+});
+
 Route::prefix('/post')->group(function(){
-	Route::get('/detail/{slug}', 'PostController@detail_post')->name('post.detail');
+	Route::get('/detail/{slug}', 'PostController@detail')->name('post.detail');
 });
 
 Route::prefix('/admin')->group(function(){

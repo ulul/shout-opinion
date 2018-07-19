@@ -10,7 +10,7 @@
 
 @section('content')
 
-<div class="row">
+<div class="row ml-4">
     <div class="col-sm text-center mb-4">
         <div class="card border-light" style="width: 18rem;">
             <img alt="Card image cap" class="card-img-top" src="img/image1.jpeg">
@@ -60,59 +60,9 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-sm text-center mb-1">
-        <div class="card border-light" style="width: 18rem;">
-            <img alt="Card image cap" class="card-img-top" src="img/image2.jpeg">
-                <div class="card-body">
-                    <a class="text-dark" href="#">
-                        <h4 class="card-title">
-                            Post Title
-                        </h4>
-                    </a>
-                    <p class="card-text text-left">
-                        Some quick example text to build on the Post Title and make up the bulk of the card's content.
-                    </p>
-                </div>
-            </img>
-        </div>
-    </div>
-    <div class="col-sm text-center mb-1">
-        <div class="card border-light" style="width: 18rem;">
-            <img alt="Card image cap" class="card-img-top" src="img/image3.jpeg">
-                <div class="card-body">
-                    <a class="text-dark" href="#">
-                        <h4 class="card-title">
-                            Post Title
-                        </h4>
-                    </a>
-                    <p class="card-text text-left">
-                        Some quick example text to build on the Post Title and make up the bulk of the card's content.
-                    </p>
-                </div>
-            </img>
-        </div>
-    </div>
-    <div class="col-sm text-center mb-1">
-        <div class="card border-light" style="width: 18rem;">
-            <img alt="Card image cap" class="card-img-top" src="img/image1.jpeg">
-                <div class="card-body">
-                    <a class="text-dark" href="#">
-                        <h4 class="card-title">
-                            Post Title
-                        </h4>
-                    </a>
-                    <p class="card-text text-left">
-                        Some quick example text to build on the Post Title and make up the bulk of the card's content.
-                    </p>
-                </div>
-            </img>
-        </div>
-    </div>
-</div>
-</div>
+
 <!-- jumbotron -->
-<div class="jumbotron mt-5">
+<div class="jumbotron">
 <h1 class="display-4">
     Welcome to Summer Story
 </h1>
@@ -161,7 +111,7 @@
                     {{ $str }}
                 </p>
                 <h6 class="blockquote-footer">
-                    Nuzulul Huda, Jul 10 2018999
+                    {{ $post->user->name }}, {{ \Carbon\Carbon::parse($post->created_at)->format('d-m-Y')}}
                 </h6>
             </div>
             <div class="col-4">

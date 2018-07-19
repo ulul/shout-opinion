@@ -51,7 +51,7 @@ class PostController extends Controller
      * @param  [String] $slug 
      * @return void
      */
-    public function detail_post($slug)
+    public function detail($slug)
     {
     	$post = Post::where('slug', '=', $slug)->firstOrFail();
     	return view('posts.detail', compact('post'));
