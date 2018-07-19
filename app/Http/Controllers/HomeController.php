@@ -33,6 +33,5 @@ class HomeController extends Controller
     public function disclaimer()
     {
         echo "disclaimer";
-        exit();
     }
 }
