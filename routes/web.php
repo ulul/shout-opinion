@@ -11,11 +11,12 @@
 |
 */
 
-
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/about-us', 'HomeController@about')->name('home.about');
+Route::get('/disclaimer', 'HomeController@disclaimer')->name('home.disclaimer');
+Route::get('/privacy-policy', 'HomeController@privacyPolicy')->name('home.privacy');
 
 Route::prefix('/user')->group(function(){
 	Route::get('/profile/{username}', 'UserController@profile')->name('user.profile');

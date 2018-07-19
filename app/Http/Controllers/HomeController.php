@@ -19,4 +19,20 @@ class HomeController extends Controller
         $posts = Post::all()->sortByDesc('id');
         return view('home', compact('posts'));
     }
+
+    public function privacyPolicy()
+    {
+        echo "Privacy Policy";
+    }
+
+    public function about()
+    {
+        echo "About us";
+    }
+
+    public function disclaimer()
+    {
+        echo "disclaimer";
+        exit();
+    }
 }
