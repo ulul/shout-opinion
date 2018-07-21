@@ -20,11 +20,17 @@ Route::get('/privacy-policy', 'HomeController@privacyPolicy')->name('home.privac
 
 Route::prefix('/user')->group(function(){
 	Route::get('/profile/{username}', 'UserController@profile')->name('user.profile');
+	Route::get('/edit-profile/{username}', 'UserController@formEditUser')
+		->name('user.edit.profile');
+	Route::put('/edit-profile/{username}', 'UserController@update')->name('user.edit.profile');
 });
 
-Route::prefix('/post')->group(function(){
+Route::prefix('/opinion')->group(function(){
 	Route::get('/detail/{slug}', 'PostController@detail')->name('post.detail');
+	Route::get('/create', 'PostController@create')->name('post.create');
+	Route::post('/store', 'PostController@store')->name('post.store');
 });
+
 
 Route::prefix('/admin')->group(function(){
 	Route::get('/', 'AdminController@index')->name('admin.home');
@@ -33,3 +39,7 @@ Route::prefix('/admin')->group(function(){
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 	
 });
+
+ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+     \UniSharp\LaravelFilemanager\Lfm::routes();
+ });

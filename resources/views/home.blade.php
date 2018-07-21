@@ -82,7 +82,7 @@
 </div>
 <!-- /jumbotron -->
 <div class="row mb-3">
-<diw class="col-sm-12 col-md-8">
+<div class="col-sm-12 col-md-8">
     <h3>
         Latest Posts
     </h3>
@@ -124,6 +124,8 @@
         
     </hr>
 </div>
+
+
 </div>
 
 @endsection

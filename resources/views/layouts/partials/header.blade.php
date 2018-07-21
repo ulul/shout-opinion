@@ -33,9 +33,9 @@
         <ul class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 @if (Auth::user()->avatar == '')
-                   {{ ucfirst(Auth::user()->name) }} <img src="{{ url('/img/app/ava.png') }}" style="width: 30px;" >
+                    {{ ucfirst(Auth::user()->name) }} <img src="{{ url('/img/app/ava.png') }}" style="width: 30px;" >
                 @else
-
+                    {{ ucfirst(Auth::user()->name) }} <img src="{{ Storage::url(Auth::user()->avatar) }}" style="width: 30px;" class="rounded-circle" >
                 @endif
                  <span class="caret"></span>
             </a>
@@ -47,8 +47,8 @@
                 </a>
             </li>
             <li>
-                <a class="dropdown-item" href="#">
-                    {{ __('My Posts')}}
+                <a class="dropdown-item" href="{{ route('post.create') }}">
+                    {{ __('Create Opinion')}}
                 </a>
             </li>
 

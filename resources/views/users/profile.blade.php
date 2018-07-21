@@ -13,69 +13,64 @@
                 <p class="ml-5">Total post : {{ count($user_posts) }}</p>
             </div>
             <div class="col-md-6 text-center">
-                <img src='{{ url('/img/app/ava.png') }}' class="rounded img-thumbnail mt-3" style="width: 100px;"></img>
+                
+                @if ($user-> avatar == '')
+                    <img src='{{ url('/img/app/ava.png') }}' class="rounded img-thumbnail mt-3" style="width: 100px;"></img>
+                @else 
+                    <img src='{{ Storage::url($user->avatar) }}' class="rounded img-thumbnail mt-3" style="width: 100px;"></img>
+                @endif
+
             </div>
         </div>
 
         <div class="row mb-5">
             <div class="col-md-6 ">
-                <button class="btn btn-default ml-5">Edit Profile</button>
+                <a href="{{ route('user.edit.profile', $user->username) }}">
+                    <button class="btn btn-primary ml-5">Edit Profile</button>
+                </a>
             </div>
         </div>
         <hr>
         @forelse ($user_posts AS $post)
-
-        <div class="row">
+        @if ($loop->iteration % 3 == 0 || $loop->iteration == 1)
+            <div class="row">
+        @endif
+                  
                     <div class="col-sm text-center mb-4">
                         <div class="card border-light" style="width: 18rem;">
-                            <img alt="Card image cap" class="card-img-top" src="img/image1.jpeg">
+                            <img alt="Card image cap" class="card-img-top img-thumbnail" src="{{ url('img/'.$post->thumbnail) }}">
                                 <div class="card-body">
-                                    <a class="text-dark" href="#">
+                                    <a class="text-dark" href="{{ route('post.detail', $post->slug) }}">
                                         <h4 class="card-title">
-                                            Post Title
+                                            {{ $post->title }}
                                         </h4>
                                     </a>
-                                    <p class="card-text text-left">
-                                        Some quick example text to build on the Post Title and make up the bulk of the card's content.
-                                    </p>
-                                </div>
-                            </img>
+                                    <p class="card-text text-left ">
+                                    @php
+                                        $str = '';
+                                        $pecah = explode(" ", $post->description);
+                                        if(count($pecah) >= 20){
+                                            $j = 20;
+                                        }else{
+                                            $j = count($pecah);
+                                        }
+                                        for ($i=0; $i < $j; $i++) { 
+                                            $str.=$pecah[$i]." ";
+                                        }
+                                    @endphp
+                                    {{ $str }}
+                                </p>
+                                <h6 class="blockquote-footer text-left">
+                                    {{ $post->user->name }}, {{ \Carbon\Carbon::parse($post->created_at)->format('d-m-Y')}}
+                                </h6>
+                            
                         </div>
+                  
                     </div>
-                    <div class="col-sm text-center mb-1">
-                        <div class="card border-light" style="width: 18rem;">
-                            <img alt="Card image cap" class="card-img-top" src="img/image2.jpeg">
-                                <div class="card-body">
-                                    <a class="text-dark" href="#">
-                                        <h4 class="card-title">
-                                            Post Title
-                                        </h4>
-                                    </a>
-                                    <p class="card-text text-left">
-                                        Some quick example text to build on the Post Title and make up the bulk of the card's content.
-                                    </p>
-                                </div>
-                            </img>
-                        </div>
-                    </div>
-                    <div class="col-sm text-center mb-1">
-                        <div class="card border-light" style="width: 18rem;">
-                            <img alt="Card image cap" class="card-img-top" src="img/image3.jpeg">
-                                <div class="card-body">
-                                    <a class="text-dark" href="#">
-                                        <h4 class="card-title">
-                                            Post Title
-                                        </h4>
-                                    </a>
-                                    <p class="card-text card-text text-left">
-                                        Some quick example text to build on the Post Title and make up the bulk of the card's content.
-                                    </p>
-                                </div>
-                            </img>
-                        </div>
-                    </div>
-        </div>
-
+         @if ($loop->iteration % 3 == 0 || $loop->iteration == 1)           
+            </div>
+        @endif
+        {{ $user_posts->links() }}
         @empty
 
         <p>No post available from this user</p>

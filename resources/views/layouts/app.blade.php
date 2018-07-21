@@ -6,10 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-       
-
-        <title>Summer Story</title>
-
+        <title>Shout Opinion</title>
 
     </head>
     <body>
@@ -27,7 +24,9 @@
 <script src="{{ asset('js/jquery-3.2.1.slim.min.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/tinymce.min.js') }}"></script>
 
+@yield('scripts')
 
 </body>
 </html>
