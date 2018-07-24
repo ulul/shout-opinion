@@ -8,14 +8,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Update Profile') }}</div>
-                @if ($errors)
-                    @php
-                        print_r($errors);
-                    @endphp
-                @endif
-                <div class="card-body">
+            <div class="card border-info">
+                <div class="card-header bg-info text-white">{{ __('Update Profile') }}</div>
+               
+                <div class="card-body mt-4">
                     <form method="POST" enctype="multipart/form-data" action="{{ route('user.edit.profile', $user->id) }}" aria-label="{{ __('Register') }}">
                         @csrf
                         @method('PUT')

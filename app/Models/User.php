@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-
+    use SoftDeletes;
     use Notifiable;
+    protected $softDelete = true;
 
     protected $dates = ['deleted_at'];
 
@@ -34,6 +35,11 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany('App\Models\Post');
+    }
+
+    public function comment()
+    {
+        return $this->hasMany('App\Models\Post_comment');
     }
 
 }

@@ -25,9 +25,9 @@ class CreatePostsTable extends Migration
             $table->foreign('category_id')
                   ->references('id')->on('categories')
                   ->onDelete('cascade');
-             
-            $table->String('title');
-            $table->Integer('page_views')->nullable();
+            $table->text('highlight');
+            $table->String('title')->unique();
+            $table->Integer('page_views')->default('0');;
             $table->text('description');
             $table->String('slug')->unique();
             $table->String('thumbnail');

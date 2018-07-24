@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['profile']);
     }
 
     /**
@@ -29,7 +29,10 @@ class UserController extends Controller
     public function profile($username)
     {
         $user = User::where('username', $username)->firstOrFail();
-        $user_posts = Post::where('user_id', $user->id)->paginate(15);
+        $user_posts = Post::with('user')
+                            ->where('user_id', $user->id)
+                            ->orderBy('id', 'DESC')
+                            ->paginate(15);
         
         return view('users.profile', compact('user', 'user_posts'));
     }
@@ -94,19 +97,8 @@ class UserController extends Controller
         $user->update($data);
 
         return redirect()->route('user.profile', $request->username)->with([
-            'lecturer' => 'Profile has been updated.'
+            'message' => 'Profile has been updated.'
         ]);
 
-
-        /*$user->update([
-            'name' => ucwords($request->name),
-            'username' => strtolower($request->username),
-            'email' => $request->email,
-            'gender' => $request->gender,
-        ]);*/
-/*
-        return redirect()->route('')->with([
-            'User' => 'Your profile has been updated',
-        ]);*/
     }
 }

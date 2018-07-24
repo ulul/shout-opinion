@@ -19,17 +19,16 @@
                     Categories 
                 </a>
                 <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                    <a class="dropdown-item" href="#">
-                        Action
+                    <a class="dropdown-item" href="{{ route('post.index') }}">
+                        All Categories
                     </a>
-                    <a class="dropdown-item" href="#">
-                        Another action
-                    </a>
-                    <div class="dropdown-divider">
-                    </div>
-                    <a class="dropdown-item" href="#">
-                        Something else here
-                    </a>
+                   @forelse ($categories AS $category)
+                        <a class="dropdown-item" href="{{ route('opinion.category', $category->category_slug) }}">
+                            {{ $category->category }}
+                        </a>
+                   @empty
+
+                   @endforelse
                 </div>
             </li>
 
