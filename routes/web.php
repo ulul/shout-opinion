@@ -49,6 +49,7 @@ Route::prefix('/opinion')->group(function(){
 	Route::get('/create', 'PostController@create')->name('post.create');
 	Route::get('/edit/{slug}', 'PostController@edit')->name('post.edit');
 	Route::get('/detail/{slug}', 'PostController@detail')->name('post.detail');
+	Route::post('/opinion/search', 'PostController@search')->name('post.search');
 	Route::get('/category/{slug}', 'PostController@opinionByCategory')->name('opinion.category');
 });
 

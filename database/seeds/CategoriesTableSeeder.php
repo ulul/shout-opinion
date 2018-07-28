@@ -12,10 +12,10 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
     	$categories = ['Hoax Saber', 'News'];
-        for($i = 1; $i <= 2; $i++) {
+        for($i = 0; $i <= 1; $i++) {
         $category = $categories[rand(0, 1)];
         App\Models\Category::create([
-            'category' => $category,
+            'category' => $categories[$i],
             'category_slug' => str_slug($category),
         ]);
     }

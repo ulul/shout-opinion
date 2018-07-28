@@ -49,7 +49,7 @@ class AdminController extends Controller
     public function deleteUser($username)
     {
         $user = User::where('username', $username)->firstOrFail();
-        //$user->softDeletes();
+        $user->delete();
 
         return redirect()->route('admin.manage.user')->with([
             'message' => 'User has been deleted'
@@ -63,8 +63,14 @@ class AdminController extends Controller
      */
     public function activateUser($username)
     {
-        $user = User::where('username', $username)->firstOrFail();
-        dd($user);
+        $user = User::withTrashed()
+                        ->where('username', $username)
+                        ->firstOrFail();
+        $user->restore();
+
+        return redirect()->route('admin.manage.user')->with([
+            'message' => 'User has been activated'
+        ]);
     }
 
     /**

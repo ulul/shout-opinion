@@ -18,7 +18,7 @@
     @forelse ($popular_posts AS $post)
         <div class="col-sm text-center mb-4">
             <div class="card border-light" style="width: 18rem;">
-                <img alt="Card image cap" class="card-img-top card-thumb" src="{{ Storage::url($post->thumbnail) }}">
+                <img alt="Card imagep cap" class="card-img-top card-thumb" src="{{ Storage::url($post->thumbnail) }}">
                     <div class="card-body">
                         <a class="text-dark" href="{{ route('post.detail', $post->slug) }}">
                             <h4 class="card-title">
@@ -29,7 +29,7 @@
                             {{ $post->highlight }}
                         </p>
                         <h6 class="blockquote-footer text-left">
-                            {{ $post->user->name }}, {{ $post->created_at->diffForHumans() }}
+                           {{ $post->user->name }}, {{ $post->created_at->diffForHumans() }}
                         </h6>
                     </div>
                 </img>
@@ -50,7 +50,7 @@
 <!-- jumbotron -->
 <div class="jumbotron">
 <h1 class="display-4">
-    Welcome to Summer Story
+    Welcome to shoutopinion.com
 </h1>
 <p class="lead">
     Express yourself by writing
@@ -97,6 +97,38 @@
     @endforelse
         
     </hr>
+</div>
+
+<div class="col-md-4">
+    <h3>
+        Popular User
+    </h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+            @foreach ($top_users AS $user)
+                <tr>
+                    
+                    <td width="50">
+                        @if ($user->avatar)
+                            <img src="{{ Storage::url($user->avatar) }}" class="rounded-circle" width="60">
+                        @else
+                            <img src="{{ url('/img/app/ava.png') }}" class="rounded-circle" width="60">
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('user.profile', $user->username) }}" class="text-dark">
+                            <p class="mt-2">{{ $user->name }}</p>
+                        </a>
+                        <p class="mt-2">{{ $user->posts_count }} Post</p>
+                    </td>
+                </tr>
+            @endforeach
+            
+            </table>
+        </div>
+    </div>
 </div>
 
 

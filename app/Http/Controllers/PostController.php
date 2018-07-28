@@ -21,7 +21,7 @@ class PostController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'detail', 'opinionByCategory']);
+        $this->middleware('auth')->except(['index', 'detail', 'opinionByCategory','search']);
     }
 
     /**
@@ -32,6 +32,15 @@ class PostController extends Controller
     {
     	$posts = Post::with('user')->orderBy('id', 'DESC')->paginate(9);
     	return view('posts.index', compact('posts'));
+    }
+
+    public function search(Request $request)
+    {
+        $posts = Post::with('user')
+                    ->where('description', 'LIKE' ,  '%'.$request->search.'%')
+                    ->orWhere('title', 'LIKE' ,  '%'.$request->search.'%')
+                    ->paginate(9);
+        return view('posts.index', compact('posts'));
     }
 
     /**

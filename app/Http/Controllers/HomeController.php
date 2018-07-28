@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,12 +18,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $popular_posts = Post::with('user')->orderBy('page_views', 'DESC')
-                            ->paginate(6);
-        $posts = Post::with('user')->orderBy('id', 'DESC')
-                            ->paginate(10);
+        $popular_posts = Post::with('user')
+                        ->orderBy('page_views', 'DESC')
+                        ->paginate(6);
 
-        return view('home', compact('posts', 'popular_posts'));
+        $posts = Post::with('user')
+                        ->orderBy('id', 'DESC')
+                        ->paginate(8);
+
+        $top_users = User::withCount('posts')
+                        ->orderByDesc('posts_count')
+                        ->paginate(10);
+
+        return view('home', compact('posts', 'popular_posts', 'top_users'));
     }
 
     public function privacyPolicy()

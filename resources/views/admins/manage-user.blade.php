@@ -6,7 +6,11 @@
 
 @section('content')
 	<main class="page-content mb-5">
-
+		@if (Session::get('message'))
+            <div class="alert alert-success">
+                {{ Session::get('message') }}
+            </div>
+        @endif
 		<table class="table">
 		  <thead class="thead-dark">
 		    <tr>

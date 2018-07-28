@@ -64,7 +64,7 @@
     <hr>
     @if (Auth::user())
         @if (Auth::user()->avatar)
-            <img src="{{ Storage::url(Storage::url(Auth::user()->avatar)) }}" class="rounded-circle" style="width: 30px;">
+            <img src="{{ Storage::url(Auth::user()->avatar) }}" class="rounded-circle" style="width: 30px;">
         @else
             <img src="{{ url('/img/app/ava.png') }}" class="rounded-circle" style="width: 30px;">
         @endif
@@ -89,12 +89,12 @@
             </a> to comment
         </div>
     @endif
-    
+    <div class="container-fluid mt-5">
     @foreach ($comments AS $comment)
         <div class="alert alert-light border-primary" role="alert">
             <p>
             @if ($comment->user->avatar)
-                <img src="{{ Storage::get($comment->user->avatar) }}" style="width: 30px;"> 
+                <img src="{{ Storage::url($comment->user->avatar) }}" class="rounded-circle" style="width: 30px;"> 
             @else
                 <img src="{{ url('/img/app/ava.png') }}" style="width: 30px;">
             @endif
@@ -102,7 +102,7 @@
             {{ $comment->comment }}
         </div>
     @endforeach
-
+    </div>
 </div>
         
 @endsection

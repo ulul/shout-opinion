@@ -34,7 +34,7 @@
             @endif
         @endif
         <hr>
-         @if (Session::get('message'))
+        @if (Session::get('message'))
             <div class="alert alert-success">
                 {{ Session::get('message') }}
             </div>
