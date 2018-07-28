@@ -4,13 +4,13 @@ shout-opinion is a blogging platform for everyone who want to write their opinio
 
 ## Instalation
 
-Before install see the requirements for laravel "5.6" instalation 
+Before installing see the requirements for laravel "5.6" instalation 
 [Laravel-Instalation](https://laravel.com/docs/5.6/installation#server-requirements),<br>
 `clone this repository` and copy file `.env.example` to `.env`  <br>
 
 ## Configuration
 
-run artisan command `php artisan key:generate` and setting you database connection in `.env` file <br>
+run artisan command `php artisan key:generate` and setting your database connection in `.env` file <br>
 and update all dependency with command `composer update` <br>
 see configuration for [Unisharp/laravel-filemanager](https://unisharp.github.io/laravel-filemanager/installation)
 
