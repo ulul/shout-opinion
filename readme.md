@@ -12,7 +12,7 @@ Before install see the requirements for laravel "5.6" instalation
 
 run artisan command `php artisan key:generate` and setting you database connection in `.env` file <br>
 and update all dependency with command `composer update` <br>
-see configuration for [instalation-Unisharp/laravel-filemanager](https://unisharp.github.io/laravel-filemanager/installation)
+see configuration for [Unisharp/laravel-filemanager](https://unisharp.github.io/laravel-filemanager/installation)
 
 ## issue package 
 
