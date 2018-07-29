@@ -20,11 +20,13 @@ class HomeController extends Controller
     {
         $popular_posts = Post::with('user')
                         ->orderBy('page_views', 'DESC')
-                        ->paginate(6);
+                        ->limit(6)
+                        ->get();
 
         $posts = Post::with('user')
                         ->orderBy('id', 'DESC')
-                        ->paginate(8);
+                        ->limit(6)
+                        ->get();
 
         $top_users = User::withCount('posts')
                         ->orderByDesc('posts_count')

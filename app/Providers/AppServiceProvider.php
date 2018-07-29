@@ -14,7 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('*', function ($view) {
+
+        view()->composer('layouts.partials.nav', function ($view) {
             $categories = Category::all();
             $view->with('categories', $categories);
         });
